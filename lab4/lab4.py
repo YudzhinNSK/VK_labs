@@ -3,26 +3,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tol import tolsolvty
 
-#A_first = np.array([[7, -2, -1], [6, -4, -5], [1, 2, 4]])
 A_first = np.array([[3, -5, 2], [7, -4, 1], [5, 7, -4]])
-#A_first = np.array([[4, -3, 2], [3, -2, 1], [5, -3, 1]])
 c = [0, 0, 0, 1, 1, 1]
-#b = [2, 3, 5]
-#inf_b = np.array([0, 1, 3]).reshape(3,1)
-#sup_b = np.array([4, 5, 7]).reshape(3,1)
-#b = [2, 3, 5]
 inf_b = np.array([3, 1, -1]).reshape(3,1)
 sup_b = np.array([7, 3, 3]).reshape(3,1)
 [tolmax, argmax, envs, ccode] = tolsolvty(A_first, A_first, inf_b, sup_b)
 print("tolmax = ", tolmax)
 print("argmax = ", argmax)
-#mid_b = np.array([2, 3, 5])
-#rad_b = np.array([2, 2, 2])
 mid_b = np.array([4, 2, 3])
 rad_b = np.array([2, 2, 2])
 
 n = 3
-#c = np.hstack([np.zeros(3), np.ones(3)])
 neg_diag = -np.diag(rad_b)
 r = np.hstack([-mid_b, mid_b])
 C = np.block([[-A_first, neg_diag], [A_first, neg_diag]])
